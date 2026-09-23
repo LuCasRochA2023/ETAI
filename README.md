@@ -113,6 +113,6 @@ False positive rate by race
     caucasian            FPR = 0.00  (n=3)
     hispanic             FPR = 0.33  (n=3)
 
-### Detais week 3
+### Details week 3
 
 It was worth treating the data to test a new dataset. The result showed that Logistc Regression achieved higher  accuracy, better generalization and less overfitting.
