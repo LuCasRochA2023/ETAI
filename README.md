@@ -1,118 +1,88 @@
-# Lucas Carvalho da Rocha 20260526  
+# Lucas Carvalho da Rocha
+## 20260526
 
-## Decision Tree:
-Train accuracy: 0.679
-Test accuracy:  0.669
+# COMPAS Recidivism Prediction
 
-## Logistic Regression(Better):
-Train accuracy: 0.678
-Test accuracy:  0.679
+This project evaluates and compares predictive models for recidivism risk using the COMPAS dataset. The goal is to predict whether a person will reoffend within two years and to assess fairness across demographic groups.
 
-## Week 3: decision-tree
-Classification report (test set):
-              precision    recall  f1-score   support
+## Model comparison
 
-           0       0.70      0.68      0.69       684
-           1       0.63      0.65      0.64       568
+### Decision Tree
+- Train accuracy: 0.682
+- Test accuracy: 0.669
+- Gap (train - test): +0.012
 
-    accuracy                           0.67      1252
-   macro avg       0.67      0.67      0.67      1252
-weighted avg       0.67      0.67      0.67      1252
+### Logistic Regression
+- Train accuracy: 0.676
+- Test accuracy: 0.657
+- Gap (train - test): +0.019
 
-False positive rate by race
-(share of people who did NOT reoffend, but were predicted to)
+## Week 3: Decision Tree
 
-  Our model:
-     African-American    FPR = 0.67  (n=6)
-     Caucasian           FPR = 0.00  (n=1)
-    -                    FPR = 0.20  (n=5)
-    ?                    FPR = 0.33  (n=3)
-    AFRICAN-AMERICAN     FPR = 0.00  (n=4)
-    African American     FPR = 0.33  (n=3)
-    African-American     FPR = 0.39  (n=303)
-    Asian                FPR = 0.33  (n=3)
-    CAUCASIAN            FPR = 0.25  (n=4)
-    Caucasian            FPR = 0.31  (n=232)
-    Hispanic             FPR = 0.15  (n=61)
-    Native American      FPR = 0.00  (n=2)
-    Other                FPR = 0.15  (n=41)
-    african-american     FPR = 0.20  (n=10)
-    caucasian            FPR = 0.33  (n=3)
-    hispanic             FPR = 0.33  (n=3)
+### Classification report (test set)
 
-  COMPAS's own score:
-     African-American    FPR = 0.50  (n=6)
-     Caucasian           FPR = 0.00  (n=1)
-    -                    FPR = 0.20  (n=5)
-    ?                    FPR = 0.00  (n=3)
-    AFRICAN-AMERICAN     FPR = 0.25  (n=4)
-    African American     FPR = 0.33  (n=3)
-    African-American     FPR = 0.44  (n=303)
-    Asian                FPR = 0.00  (n=3)
-    CAUCASIAN            FPR = 0.25  (n=4)
-    Caucasian            FPR = 0.25  (n=232)
-    Hispanic             FPR = 0.15  (n=61)
-    Native American      FPR = 0.50  (n=2)
-    Other                FPR = 0.20  (n=41)
-    african-american     FPR = 0.50  (n=10)
-    caucasian            FPR = 0.00  (n=3)
-    hispanic             FPR = 0.33  (n=3)
+| Class | Precision | Recall | F1-score | Support |
+|-------|-----------|--------|----------|---------|
+| 0 | 0.68 | 0.77 | 0.72 | 793 |
+| 1 | 0.66 | 0.55 | 0.60 | 650 |
 
-## Week 3: Logistic regression
+- Accuracy: 0.67
+- Macro avg: 0.67
+- Weighted avg: 0.67
 
-Train accuracy: 0.680
-Test accuracy:  0.681
-Gap (train - test): -0.000
+### False positive rate by race
 
-Classification report (test set):
-              precision    recall  f1-score   support
+Share of people who did not reoffend but were predicted to.
 
-           0       0.69      0.74      0.72       684
-           1       0.66      0.60      0.63       568
+#### Our model
+- African-American: FPR = 0.32 (n=349)
+- Asian: FPR = 0.00 (n=2)
+- Caucasian: FPR = 0.19 (n=290)
+- Hispanic: FPR = 0.11 (n=85)
+- Native American: FPR = 0.00 (n=1)
+- Other: FPR = 0.17 (n=54)
 
-    accuracy                           0.68      1252
-   macro avg       0.68      0.67      0.67      1252
-weighted avg       0.68      0.68      0.68      1252
+#### COMPAS's own score
+- African-American: FPR = 0.44 (n=349)
+- Asian: FPR = 0.00 (n=2)
+- Caucasian: FPR = 0.24 (n=290)
+- Hispanic: FPR = 0.16 (n=85)
+- Native American: FPR = 1.00 (n=1)
+- Other: FPR = 0.20 (n=54)
 
-False positive rate by race
-(share of people who did NOT reoffend, but were predicted to)
+> Full results saved to: results/run_20260923_215138.txt
 
-  Our model:
-     African-American    FPR = 0.50  (n=6)
-     Caucasian           FPR = 0.00  (n=1)
-    -                    FPR = 0.20  (n=5)
-    ?                    FPR = 0.33  (n=3)
-    AFRICAN-AMERICAN     FPR = 0.00  (n=4)
-    African American     FPR = 0.33  (n=3)
-    African-American     FPR = 0.33  (n=303)
-    Asian                FPR = 0.33  (n=3)
-    CAUCASIAN            FPR = 0.25  (n=4)
-    Caucasian            FPR = 0.23  (n=232)
-    Hispanic             FPR = 0.10  (n=61)
-    Native American      FPR = 0.00  (n=2)
-    Other                FPR = 0.12  (n=41)
-    african-american     FPR = 0.10  (n=10)
-    caucasian            FPR = 0.00  (n=3)
-    hispanic             FPR = 0.33  (n=3)
+## Week 3: Logistic Regression
 
-  COMPAS's own score:
-     African-American    FPR = 0.50  (n=6)
-     Caucasian           FPR = 0.00  (n=1)
-    -                    FPR = 0.20  (n=5)
-    ?                    FPR = 0.00  (n=3)
-    AFRICAN-AMERICAN     FPR = 0.25  (n=4)
-    African American     FPR = 0.33  (n=3)
-    African-American     FPR = 0.44  (n=303)
-    Asian                FPR = 0.00  (n=3)
-    CAUCASIAN            FPR = 0.25  (n=4)
-    Caucasian            FPR = 0.25  (n=232)
-    Hispanic             FPR = 0.15  (n=61)
-    Native American      FPR = 0.50  (n=2)
-    Other                FPR = 0.20  (n=41)
-    african-american     FPR = 0.50  (n=10)
-    caucasian            FPR = 0.00  (n=3)
-    hispanic             FPR = 0.33  (n=3)
+### Classification report (test set)
+
+| Class | Precision | Recall | F1-score | Support |
+|-------|-----------|--------|----------|---------|
+| 0 | 0.65 | 0.80 | 0.72 | 793 |
+| 1 | 0.66 | 0.48 | 0.56 | 650 |
+
+- Accuracy: 0.66
+- Macro avg: 0.66
+- Weighted avg: 0.66
+
+### False positive rate by race
+
+#### Our model
+- African-American: FPR = 0.28 (n=349)
+- Asian: FPR = 0.00 (n=2)
+- Caucasian: FPR = 0.14 (n=290)
+- Hispanic: FPR = 0.11 (n=85)
+- Native American: FPR = 0.00 (n=1)
+- Other: FPR = 0.19 (n=54)
+
+#### COMPAS's own score
+- African-American: FPR = 0.44 (n=349)
+- Asian: FPR = 0.00 (n=2)
+- Caucasian: FPR = 0.24 (n=290)
+- Hispanic: FPR = 0.16 (n=85)
+- Native American: FPR = 1.00 (n=1)
+- Other: FPR = 0.20 (n=54)
 
 ### Details week 3
 
-It was worth treating the data to test a new dataset. The result showed that Logistc Regression achieved higher  accuracy, better generalization and less overfitting.
+It was worth treating the data to test a new dataset. The result showed that Decision Tree achieved higher accuracy, better Macro avg and Weighted avg.
